@@ -4,11 +4,15 @@ let p3 = new Promise((resolve) => setTimeout(() => resolve("5000ms"), 5000));
 
 function myAllPromise(promises) {
   return new Promise((resolve, reject) => {
+    if (promises.length === 0) {
+      return resolve([]);
+    }
+
     const allResolved = new Array(promises.length);
     let resolvedCount = 0;
 
     promises.forEach((promise, index) => {
-      promise
+      Promise.resolve(promise) // Promise.resolve is used instead of promise to include non promises
         .then((value) => {
           allResolved[index] = value;
           resolvedCount++;
