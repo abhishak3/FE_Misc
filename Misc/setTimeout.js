@@ -4,7 +4,7 @@ function createSetTimeout() {
 
   // My set timeout function
   return {
-    mySetTimout: function (fn, delay, ...args) {
+    mySetTimeout: function (fn, delay, ...args) {
       const id = getId();
 
       const calledDate = new Date();
@@ -42,7 +42,7 @@ function createSetTimeout() {
   };
 }
 
-const { mySetTimout, clearMySetTimeout } = createSetTimeout();
+const { mySetTimeout, clearMySetTimeout } = createSetTimeout();
 
-const id = mySetTimout((msg) => console.log("logged", msg), 3000, "wow");
+const id = mySetTimeout((msg) => console.log("logged", msg), 3000, "wow");
 clearMySetTimeout(id);
